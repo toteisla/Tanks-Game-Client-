@@ -163,10 +163,10 @@ int Game::ini(){
         }
         else if(ev.type == ALLEGRO_EVENT_TIMER)
         {
-            if (keys[UP] || raton_mov[UP]) { if (cam_pos_x > 0 && cam_pos_y > 0){ player.pos_y--;}}
-            if (keys[DOWN] || raton_mov[DOWN]) { if (cam_pos_x < 99 && cam_pos_y < 99){ player.pos_y++;}}
-            if (keys[LEFT] || raton_mov[LEFT]) { if (cam_pos_x < 99 && cam_pos_y > 0){ player.pos_x--;}}
-            if (keys[RIGHT] || raton_mov[RIGHT]) { if (cam_pos_x > 0 && cam_pos_y < 99){ player.pos_x++;}}
+            if (keys[W] || keys[UP] || raton_mov[UP]) { if (cam_pos_x > 0 && cam_pos_y > 0){ player.pos_y--;}}
+            if (keys[S] || keys[DOWN] || raton_mov[DOWN]) { if (cam_pos_x < 99 && cam_pos_y < 99){ player.pos_y++;}}
+            if (keys[A] || keys[LEFT] || raton_mov[LEFT]) { if (cam_pos_x < 99 && cam_pos_y > 0){ player.pos_x--;}}
+            if (keys[D] || keys[RIGHT] || raton_mov[RIGHT]) { if (cam_pos_x > 0 && cam_pos_y < 99){ player.pos_x++;}}
 
             redraw = true;
         }
