@@ -1,36 +1,19 @@
-#include <stdio.h>
-
 #include <enet/enet.h>
-#include <allegro5/allegro.h>
- 
-int main(int argc, char **argv) {
-   ALLEGRO_DISPLAY *display = NULL;
- 
-   if(!al_init()) {
-      fprintf(stderr, "failed to initialize allegro JEEEEBOOOOOLLLAAAAAAA!\n");
-      return -1;
-   }
- 
-   display = al_create_display(640, 480);
-   if(!display) {
-      fprintf(stderr, "failed to create display! testeo\n");
-      return -1;
-   }
- 
-   al_clear_to_color(al_map_rgb(0,0,0));
- 
-   al_flip_display();
- 
-   al_rest(10.0);
- 
-   al_destroy_display(display);
 
+#include "Game.h"
 
+int main() {
+
+    Game game(800, 600, false, 60);
+    game.ini();
+
+    /*
     if (enet_initialize () != 0) {
         fprintf (stderr, "An error occurred while initializing ENet.\n");
         return EXIT_FAILURE;
     }
     atexit (enet_deinitialize);
- 
-   return 0;
+    */
+
+    return 0;
 }
