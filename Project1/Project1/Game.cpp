@@ -75,7 +75,7 @@ int Game::ini(){
         ALLEGRO_EVENT ev;
         al_wait_for_event(event_queue, &ev);
 
-        player.drawPlayer();
+        player.drawPlayer(raton_x, raton_y);
 
         if(ev.type == ALLEGRO_EVENT_KEY_DOWN)
         {
@@ -150,6 +150,7 @@ int Game::ini(){
             al_get_mouse_state(&estado_raton);
             if (estado_raton.buttons & 1) {
                 cout << "Pew Pew" << endl;
+                player.shoot(raton_x, raton_y);
             }
         }
         else if (ev.type == ALLEGRO_EVENT_MOUSE_AXES) {
