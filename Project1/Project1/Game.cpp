@@ -21,6 +21,8 @@ int Game::ini(){
     bool done = false;
     bool redraw = true;
 
+    int counter = 0;
+
     int cam_pos_x = 50;
     int cam_pos_y = 50;
 
@@ -151,6 +153,8 @@ int Game::ini(){
             if (estado_raton.buttons & 1) {
                 cout << "Pew Pew" << endl;
                 player.shoot(raton_x, raton_y);
+                Point<float> point(raton_x, raton_y);
+                bulletCollector.push(raton_x, raton_y, 1.0, 0.5);
             }
         }
         else if (ev.type == ALLEGRO_EVENT_MOUSE_AXES) {
@@ -164,17 +168,19 @@ int Game::ini(){
         }
         else if(ev.type == ALLEGRO_EVENT_TIMER)
         {
-            if (keys[W] || keys[UP] || raton_mov[UP]) { if (cam_pos_x > 0 && cam_pos_y > 0){ player.pos_y--;}}
-            if (keys[S] || keys[DOWN] || raton_mov[DOWN]) { if (cam_pos_x < 99 && cam_pos_y < 99){ player.pos_y++;}}
-            if (keys[A] || keys[LEFT] || raton_mov[LEFT]) { if (cam_pos_x < 99 && cam_pos_y > 0){ player.pos_x--;}}
-            if (keys[D] || keys[RIGHT] || raton_mov[RIGHT]) { if (cam_pos_x > 0 && cam_pos_y < 99){ player.pos_x++;}}
+            if (keys[W] || keys[UP] || raton_mov[UP]) { if (cam_pos_x > 0 && cam_pos_y > 0){ player.moveY(-1);}}
+            if (keys[S] || keys[DOWN] || raton_mov[DOWN]) { if (cam_pos_x < 99 && cam_pos_y < 99){ player.moveY(1);}}
+            if (keys[A] || keys[LEFT] || raton_mov[LEFT]) { if (cam_pos_x < 99 && cam_pos_y > 0){ player.moveX(-1);}}
+            if (keys[D] || keys[RIGHT] || raton_mov[RIGHT]) { if (cam_pos_x > 0 && cam_pos_y < 99){ player.moveX(1);}}
 
             redraw = true;
         }
 
-        if(redraw && al_is_event_queue_empty(event_queue))
-        {
+        if(redraw && al_is_event_queue_empty(event_queue)) {
             redraw = false;
+
+            bulletCollector.next();
+
             al_flip_display();
             al_clear_to_color(al_map_rgb(0,0,0));
         }

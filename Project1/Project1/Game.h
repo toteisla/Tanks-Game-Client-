@@ -16,19 +16,21 @@ using namespace std;
 
 //#include "map.h"
 #include "Player.h"
+#include "BulletCollector.h"
 
 //const int MAX_ENTIDADES = 255;
 
 class Game {
-    private:
-        int resX, resY, fps;
-        bool ventana_completa;
-        enum KEYS{ UP, DOWN, LEFT, RIGHT, W, S, A,D};
-    public :
-        Game(int x,int y, bool _vc, int _fps) { resX  = x; resY = y; fps = _fps; ventana_completa = _vc; }
-        int ini();
-        int reset(int _resX, int _resY);
-        void guardar_config();
+private:
+    int resX, resY, fps;
+    bool ventana_completa;
+    enum KEYS{ UP, DOWN, LEFT, RIGHT, W, S, A,D};
+    BulletCollector bulletCollector;
+public :
+    Game(int x,int y, bool _vc, int _fps) { resX  = x; resY = y; fps = _fps; ventana_completa = _vc; }
+    int ini();
+    int reset(int _resX, int _resY);
+    void guardar_config();
 };
 
 #endif

@@ -5,11 +5,6 @@
 
 int main() {
 
-    Point<int> pt(2, 5);
-    int x = pt.getx();
-    int y = pt.gety();
-    cout << x << ", " << y << endl;
-
     Game game(800, 600, false, 60);
     game.ini();
 
