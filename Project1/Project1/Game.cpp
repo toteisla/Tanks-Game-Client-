@@ -1,4 +1,5 @@
 #include "game.h"
+#include "Point.h"
 
 void Game::guardar_config(){
     cout << "Guardando configuracion" << endl;
@@ -23,11 +24,8 @@ int Game::ini(){
 
     int counter = 0;
 
-    int cam_pos_x = 50;
-    int cam_pos_y = 50;
-
-    int raton_x = 0;
-    int raton_y = 0;
+    Point<float> cam_pos(50, 50);
+    Point<float> mousePos(0, 0);
 
     bool keys[8] = {false, false, false, false,false,false,false,false};
     bool raton_mov[4] = {false,false,false,false};
@@ -50,7 +48,8 @@ int Game::ini(){
     if(!display)										//test display object
         return -1;
 
-    Player player(al_get_display_width(display) / 2 , al_get_display_height(display) / 2, 20);
+    Point<float> playerPos(al_get_display_width(display) / 2 , al_get_display_height(display));
+    Player player(playerPos, 20);
 
     if(!al_init_primitives_addon()){
         fprintf(stderr, "failed to initialize primitives addon!\n");
@@ -77,7 +76,7 @@ int Game::ini(){
         ALLEGRO_EVENT ev;
         al_wait_for_event(event_queue, &ev);
 
-        player.drawPlayer(raton_x, raton_y);
+        player.drawPlayer(mousePos);//Draw the player
 
         if(ev.type == ALLEGRO_EVENT_KEY_DOWN)
         {
@@ -152,26 +151,24 @@ int Game::ini(){
             al_get_mouse_state(&estado_raton);
             if (estado_raton.buttons & 1) {
                 cout << "Pew Pew" << endl;
-                player.shoot(raton_x, raton_y);
-                Point<float> point(raton_x, raton_y);
-                bulletCollector.push(raton_x, raton_y, 1.0, 0.5);
+                bulletCollector.push(mousePos.getx(), mousePos.gety(), 1.0, 0.5);
             }
         }
         else if (ev.type == ALLEGRO_EVENT_MOUSE_AXES) {
             al_get_mouse_state(&estado_raton);
-            raton_x = estado_raton.x;
-            raton_y = estado_raton.y;
-            if (raton_y <= 50) raton_mov[UP] = true; else if (raton_y > 50) raton_mov[UP] = false;
-            if (raton_y >= resY-50)  raton_mov[DOWN] = true; else if (raton_y < resY-50) raton_mov[DOWN] = false;
-            if (raton_x <= 50) raton_mov[LEFT] = true; else if (raton_x > 50) raton_mov[LEFT] = false;
-            if (raton_x >= resX-50) raton_mov[RIGHT] = true; else if (raton_x < resX-50) raton_mov[RIGHT] = false;
+            mousePos.setx(estado_raton.x);
+            mousePos.sety(estado_raton.y);
+            if (mousePos.gety() <= 50) raton_mov[UP] = true; else if (mousePos.gety() > 50) raton_mov[UP] = false;
+            if (mousePos.gety() >= resY-50)  raton_mov[DOWN] = true; else if (mousePos.gety() < resY-50) raton_mov[DOWN] = false;
+            if (mousePos.getx() <= 50) raton_mov[LEFT] = true; else if (mousePos.getx() > 50) raton_mov[LEFT] = false;
+            if (mousePos.getx() >= resX-50) raton_mov[RIGHT] = true; else if (mousePos.getx() < resX-50) raton_mov[RIGHT] = false;
         }
         else if(ev.type == ALLEGRO_EVENT_TIMER)
         {
-            if (keys[W] || keys[UP] || raton_mov[UP]) { if (cam_pos_x > 0 && cam_pos_y > 0){ player.moveY(-1);}}
-            if (keys[S] || keys[DOWN] || raton_mov[DOWN]) { if (cam_pos_x < 99 && cam_pos_y < 99){ player.moveY(1);}}
-            if (keys[A] || keys[LEFT] || raton_mov[LEFT]) { if (cam_pos_x < 99 && cam_pos_y > 0){ player.moveX(-1);}}
-            if (keys[D] || keys[RIGHT] || raton_mov[RIGHT]) { if (cam_pos_x > 0 && cam_pos_y < 99){ player.moveX(1);}}
+            if (keys[W] || keys[UP] || raton_mov[UP]) { if (cam_pos.getx() > 0 && cam_pos.gety() > 0){ player.moveY(-1);}}
+            if (keys[S] || keys[DOWN] || raton_mov[DOWN]) { if (cam_pos.getx() < 99 && cam_pos.gety() < 99){ player.moveY(1);}}
+            if (keys[A] || keys[LEFT] || raton_mov[LEFT]) { if (cam_pos.getx() < 99 && cam_pos.gety() > 0){ player.moveX(-1);}}
+            if (keys[D] || keys[RIGHT] || raton_mov[RIGHT]) { if (cam_pos.getx() > 0 && cam_pos.gety() < 99){ player.moveX(1);}}
 
             redraw = true;
         }

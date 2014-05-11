@@ -1,9 +1,10 @@
 #include <math.h>
 #include "utils.h"
+#include "Point.h"
 
-float getAlpha(int x1, int y1, int x2, int y2){
+float getAlpha(Point<float> iniPos, Point<float> endPos){
     float alpha;
-    float aux = (x2 - x1) / (y2 - y1);
+    float aux = (endPos.getx() - iniPos.getx()) / (endPos.gety() - iniPos.gety());
     alpha = atan( aux );
 
     return alpha;

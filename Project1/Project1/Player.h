@@ -3,17 +3,19 @@
 
 #include <allegro5\allegro.h>
 #include <allegro5\allegro_primitives.h>
+#include "Point.h"
 
 class Player {
 private:
-    int pos_x, pos_y, size;
+    Point<float> pos;
+    int size;
 public :
-    Player(int x1,int y1, int _size) { pos_x  = x1; pos_y = y1 ; size = _size;}
-    void drawPlayer(int mouse_x, int mouse_y);
-    void shoot(int mouse_x, int mouse_y);
+    Player(Point<float> _pos , int _size) { pos = _pos ; size = _size;}
+    void drawPlayer(Point<float> mousePos);// Pinta jugador, se le pasa la posicion del raton para pintar el cañon
+    void shoot(Point<float> mousePos);
 
-    void moveY(const int dir) {pos_y = pos_y + dir;}
-    void moveX(const int dir) {pos_x = pos_x + dir;}
+    void moveY(const int dir) { pos.sety(pos.gety() + dir); }
+    void moveX(const int dir) { pos.setx(pos.getx() + dir); }
 
 };
 
