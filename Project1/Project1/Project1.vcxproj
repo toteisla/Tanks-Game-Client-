@@ -80,8 +80,11 @@
     <ClCompile Include="utils.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bullet.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="BulletCollector.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Point.h" />
     <ClInclude Include="utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
