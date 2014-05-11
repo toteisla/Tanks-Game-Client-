@@ -1,4 +1,3 @@
-#include <allegro5\allegro.h>
 #include <math.h>
 #include "utils.h"
 

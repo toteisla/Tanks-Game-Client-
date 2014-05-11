@@ -1,3 +1,6 @@
+#ifndef _POINT_H_
+#define _POINT_H_
+
 #include <stdlib.h>
 #include <iostream>
 
@@ -8,13 +11,14 @@ private:
     Type x_;
     Type y_;
 public:
+    Point() { x_ = 0; y_ = 0;}
     Point(const Type valx, const Type valy);            
     Type getx();
     void setx(const Type valx);
     Type gety();
     void sety(const Type valy);
 
-    Point<Type>& operator=(Point<Type> *pt) {
+    Point<Type>& operator=(Point<Type> pt) {
         if (this != &pt) {
             x_ = pt.getx();
             y_ = pt.gety();
@@ -27,7 +31,6 @@ public:
 template <class Type> Point <Type> :: Point(const Type valx, const Type valy) {
     x_ = valx;
     y_ = valy;
-    cout << x_ << ' ' << y_ << endl;
 }
 
 template <class Type>
@@ -63,4 +66,6 @@ template <class Type>
 inline bool operator!=(const Point <Type>& lhs, const Point <Type>& rhs) {
     return !operator==(lhs,rhs);
 }
+
+#endif
 
