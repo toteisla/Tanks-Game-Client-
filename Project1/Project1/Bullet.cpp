@@ -5,8 +5,8 @@ Point<float> Bullet::next() {
 
     life--;
 
-    x = sin(angle) * speed + pos.getx();
-    y = cos(angle) * speed + pos.gety();
+    x = cos(angle) * speed + pos.getx();
+    y = sin(angle) * speed + pos.gety();
 
     Point<float> nextPos(x, y);
     pos = nextPos;

@@ -18,6 +18,7 @@ public :
         pos.sety(pos.gety() + dir);
     }
     void moveX(const int dir) { pos.setx(pos.getx() + dir); }
+    Point<float> getPos() { return pos; }
 
     Point<float> getPos() { return pos; }
 
