@@ -49,7 +49,7 @@ int Game::ini(){
         return -1;
 
     Utils utils;
-    Point<float> playerPos(al_get_display_width(display) / 2 , al_get_display_height(display));
+    Point<float> playerPos(al_get_display_width(display) / 2 , al_get_display_height(display) / 2);
     Player player(playerPos, 20);
 
     if(!al_init_primitives_addon()){
@@ -152,7 +152,9 @@ int Game::ini(){
             al_get_mouse_state(&estado_raton);
             if (estado_raton.buttons & 1) {
                 cout << "Pew Pew" << endl;
-                bulletCollector.push(mousePos.getx(), mousePos.gety(), 1.0, utils.getAlpha(playerPos, mousePos));
+                cout << "playerx: " << player.getPos().getx() << " playery: " << player.getPos().gety() << endl;
+                cout << "mousex: " << mousePos.getx() << " mousey: " << mousePos.gety() << endl;
+                bulletCollector.push(player.getPos().getx(), player.getPos().gety(), 1.0, utils.getAlpha(player.getPos(), mousePos));
             }
         }
         else if (ev.type == ALLEGRO_EVENT_MOUSE_AXES) {

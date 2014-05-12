@@ -16,6 +16,7 @@ public :
 
     void moveY(const int dir) { pos.sety(pos.gety() + dir); }
     void moveX(const int dir) { pos.setx(pos.getx() + dir); }
+    Point<float> getPos() { return pos; }
 
 };
 
