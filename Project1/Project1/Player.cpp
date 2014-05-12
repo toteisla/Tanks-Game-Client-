@@ -4,7 +4,7 @@ void Player::drawPlayer(Point<float> mousePos){
     int barrelSize = size + size / 2;
     al_draw_filled_rectangle(pos.getx() - size / 2, pos.gety() - size / 2, pos.getx() + size / 2, pos.gety() + size / 2, al_map_rgb(255, 0, 0));
 
-    al_draw_line(pos.getx(), pos.gety(), mousePos.getx(), mousePos.gety(), al_map_rgb(0, 0, 0), 2);
+    al_draw_line(pos.getx(), pos.gety(), mousePos.getx(), mousePos.gety(), al_map_rgb(255, 0, 255), 2);
 }
 
 void Player::shoot(Point<float> mousePos){

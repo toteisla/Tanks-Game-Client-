@@ -1,6 +1,4 @@
-#include <allegro5\allegro_primitives.h>
 #include "Bullet.h"
-#include "Point.h"
 
 Point<float> Bullet::next() {
     float x, y;

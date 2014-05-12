@@ -3,6 +3,8 @@
 
 #include "Point.h"
 
+using namespace std;
+
 class Utils {
     public :
         float getAlpha(Point<float> iniPos, Point<float> endPos);

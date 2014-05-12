@@ -14,8 +14,12 @@ public :
     void drawPlayer(Point<float> mousePos);// Pinta jugador, se le pasa la posicion del raton para pintar el cañon
     void shoot(Point<float> mousePos);
 
-    void moveY(const int dir) { pos.sety(pos.gety() + dir); }
+    void moveY(const int dir) {
+        pos.sety(pos.gety() + dir);
+    }
     void moveX(const int dir) { pos.setx(pos.getx() + dir); }
+
+    Point<float> getPos() { return pos; }
 
 };
 

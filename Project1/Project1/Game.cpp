@@ -1,5 +1,4 @@
 #include "game.h"
-#include "Point.h"
 
 void Game::guardar_config(){
     cout << "Guardando configuracion" << endl;
@@ -152,7 +151,7 @@ int Game::ini(){
             al_get_mouse_state(&estado_raton);
             if (estado_raton.buttons & 1) {
                 cout << "Pew Pew" << endl;
-                bulletCollector.push(mousePos.getx(), mousePos.gety(), 1.0, utils.getAlpha(playerPos, mousePos));
+                bulletCollector.push(player.getPos(), 1.0, utils.getAlpha(player.getPos(), mousePos));
             }
         }
         else if (ev.type == ALLEGRO_EVENT_MOUSE_AXES) {

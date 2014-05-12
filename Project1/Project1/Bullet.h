@@ -2,6 +2,7 @@
 #define _BULLET_H_
 
 #include <allegro5\allegro.h>
+#include <allegro5\allegro_primitives.h>
 #include "Point.h"
 #include <math.h>
 
