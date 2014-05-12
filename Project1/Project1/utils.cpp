@@ -5,3 +5,7 @@ float Utils::getAlpha(Point<float> iniPos, Point<float> endPos){
     alpha = atan2f(endPos.gety() - iniPos.gety(), endPos.getx() - iniPos.getx());
     return alpha;
 }
+
+void prueba(){
+    cout << "prueba 7eben" <<endl;
+}
