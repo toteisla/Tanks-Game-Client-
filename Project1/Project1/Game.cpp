@@ -48,7 +48,7 @@ int Game::ini(){
         return -1;
 
     Utils utils;
-    Point<float> playerPos(al_get_display_width(display) / 2 , al_get_display_height(display));
+    Point<float> playerPos(al_get_display_width(display) / 2 , al_get_display_height(display) / 2);
     Player player(playerPos, 20);
 
     if(!al_init_primitives_addon()){
