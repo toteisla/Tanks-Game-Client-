@@ -17,6 +17,7 @@ using namespace std;
 //#include "map.h"
 #include "Player.h"
 #include "BulletCollector.h"
+#include "utils.h"
 
 //const int MAX_ENTIDADES = 255;
 

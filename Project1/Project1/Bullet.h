@@ -11,6 +11,7 @@ private:
     float speed;
     float angle;
     int life;
+    void drawBullet(Point<float> pos, float rad);
 public :
     Bullet() { speed = 0.0; angle = 0.0; life = 500;}
     Bullet(Point<float> pos_, float speed_, float angle_) {
@@ -28,8 +29,7 @@ public :
     void setAngle(const float val) { angle = val;}
     int getLife() { return life; }
     void setLife(const int val) { life = val; }
-    Point<float> next();
-    
+    Point<float> next(); 
 };
 
 #endif

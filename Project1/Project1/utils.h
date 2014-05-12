@@ -1,9 +1,9 @@
 #ifndef _UTILS_H_
 #define _UTILS_H_
 
-class Utils {
-    private:
+#include "Point.h"
 
+class Utils {
     public :
         float getAlpha(Point<float> iniPos, Point<float> endPos);
 };

@@ -1,4 +1,6 @@
+#include <allegro5\allegro_primitives.h>
 #include "Bullet.h"
+#include "Point.h"
 
 Point<float> Bullet::next() {
     float x, y;
@@ -10,5 +12,10 @@ Point<float> Bullet::next() {
 
     Point<float> nextPos(x, y);
     pos = nextPos;
+    drawBullet(pos, 2);
     return nextPos;
+}
+
+void Bullet::drawBullet(Point<float> pos, float rad){
+    al_draw_filled_circle(pos.getx(), pos.gety(), rad, al_map_rgb(75, 125, 255));
 }
