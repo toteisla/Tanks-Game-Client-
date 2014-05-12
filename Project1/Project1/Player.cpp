@@ -1,10 +1,21 @@
 #include "Player.h"
+#include "utils.h"
 
 void Player::drawPlayer(Point<float> mousePos){
-    int barrelSize = size + size / 2;
+    int barrelSize = size;
+    float x, y;
+    float angle;
+
+    Utils utils;
+
     al_draw_filled_rectangle(pos.getx() - size / 2, pos.gety() - size / 2, pos.getx() + size / 2, pos.gety() + size / 2, al_map_rgb(255, 0, 0));
 
-    al_draw_line(pos.getx(), pos.gety(), mousePos.getx(), mousePos.gety(), al_map_rgb(0, 0, 0), 2);
+    angle = utils.getAlpha(pos, mousePos);
+
+    x = cos(angle) * barrelSize + pos.getx();
+    y = sin(angle) * barrelSize + pos.gety();
+
+    al_draw_line(pos.getx(), pos.gety(), x, y, al_map_rgb(0, 255, 0), 2);
 }
 
 void Player::shoot(Point<float> mousePos){
