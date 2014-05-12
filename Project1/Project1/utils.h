@@ -2,6 +2,7 @@
 #define _UTILS_H_
 
 #include "Point.h"
+#include <math.h>
 
 using namespace std;
 
