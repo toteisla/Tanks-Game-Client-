@@ -19,6 +19,7 @@ using namespace std;
 #include "BulletCollector.h"
 #include "utils.h"
 #include "Point.h"
+#include "Map.h"
 
 //const int MAX_ENTIDADES = 255;
 

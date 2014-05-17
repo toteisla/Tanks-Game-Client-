@@ -71,6 +71,9 @@ int Game::ini(){
 
     al_start_timer(timer);
 
+    Map map("test.tmx");
+    map.loadMap();
+
     while(!done)
     {
         ALLEGRO_EVENT ev;
